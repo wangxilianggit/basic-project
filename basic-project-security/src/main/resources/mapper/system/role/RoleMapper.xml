@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.panshi.hujin2.base.security.dao.mapper.system.role.RoleMapper">
+
+    <resultMap id="base_result" type="com.panshi.hujin2.base.security.dao.model.system.role.RoleDO">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="enabled" column="enabled"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createOperatorId" column="create_operator_id"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifyOperatorId" column="modify_operator_id"/>
+        <collection property="menuDOS" javaType="java.util.ArrayList" columnPrefix="m_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.menu.MenuDO">
+            <id property="id" column="id"/>
+            <result property="parentId" column="parent_id"/>
+            <result property="url" column="url"/>
+            <result property="isButton" column="is_button"/>
+            <result property="buttonKey" column="button_key"/>
+            <result property="iconPath" column="icon_path"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+    </resultMap>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into role (name, description, create_operator_id)
+        values (#{name}, #{description}, #{createOperatorId});
+    </insert>
+
+    <update id="delete">
+        update role
+        set enabled = 0, modify_operator_id = #{currentEmployeeId}
+        where id = #{roleId}
+    </update>
+
+    <update id="update">
+        update role
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name !=''">name = #{name},</if>
+            <if test="description != null and description !=''">description = #{description},</if>
+            <if test="modifyOperatorId != null">modify_operator_id = #{modifyOperatorId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <select id="get" resultMap="base_result">
+        select
+        <include refid="base_column"/>
+        from role r
+        left join role_menu rm on rm.role_id = r.id
+        left join menu m on m.id = rm.menu_id
+        where r.id = #{roleId} and r.enabled = 1 and m.enabled = 1
+    </select>
+
+    <sql id="base_column">
+        r.id,
+        r.name,
+        r.description,
+        r.enabled,
+        r.create_time,
+        r.create_operator_id,
+        r.modify_time,
+        r.modify_operator_id,
+        m.id m_id,
+        m.parent_id m_parent_id,
+        m.url m_url,
+        m.is_button m_is_button,
+        m.button_key m_button_key,
+        m.icon_path m_icon_path,
+        m.enabled m_enabled,
+        m.create_time m_create_time,
+        m.create_operator_id m_create_operator_id,
+        m.modify_time m_modify_time,
+        m.modify_operator_id m_modify_operator_id
+    </sql>
+
+    <select id="count" resultType="java.lang.Integer">
+        select count(id)
+        from role
+        <include refid="base_where"/>
+    </select>
+
+    <select id="query" resultType="com.panshi.hujin2.base.security.dao.model.system.role.RoleDO">
+        select * from role
+        <include refid="base_where"/>
+        <if test="orderObjects != null and orderObjects.size > 0">
+            order by
+            <foreach collection="orderObjects" item="orderObject" separator=",">
+                #{orderObject.orderByColumn}
+                <if test="orderObject.orderByDesc">
+                    DESC
+                </if>
+            </foreach>
+        </if>
+        <include refid="com.panshi.hujin2.base.security.dao.mapper.system.BaseMapper.base_page"/>
+    </select>
+
+    <sql id="base_where">
+        <where>
+            and enabled = 1
+            <if test="name != null and name != ''">and `name` = #{name}</if>
+            <if test="description != null and description != ''">and description = #{description}</if>
+        </where>
+    </sql>
+
+</mapper>

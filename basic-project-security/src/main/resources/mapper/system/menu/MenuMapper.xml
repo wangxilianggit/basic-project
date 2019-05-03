@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.panshi.hujin2.base.security.dao.mapper.system.menu.MenuMapper">
+
+    <resultMap id="base_result" type="com.panshi.hujin2.base.security.dao.model.system.menu.MenuDO">
+        <id property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="url" column="url"/>
+        <result property="isButton" column="is_button"/>
+        <result property="buttonKey" column="button_key"/>
+        <result property="iconPath" column="icon_path"/>
+        <result property="enabled" column="enabled"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createOperatorId" column="create_operator_id"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifyOperatorId" column="modify_operator_id"/>
+        <collection property="menuDescriptions" columnPrefix="md_" javaType="java.util.ArrayList"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.menu.MenuDescription">
+            <id property="id" column="id"/>
+            <result property="menuId" column="menu_id"/>
+            <result property="locale" column="locale"/>
+            <result property="description" column="description"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+    </resultMap>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into menu (parent_id, url, is_button, button_key, icon_path, create_operator_id)
+        values (#{parentId}, #{url}, #{isButton}, #{buttonKey}, #{iconPath},
+                #{createOperatorId});
+    </insert>
+
+    <update id="delete">
+        update menu
+        set enabled = 0, modify_operator_id = #{currentEmployeeId}
+        where id = #{menuId}
+    </update>
+
+    <update id="update">
+        update menu
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="url != null and url != ''">url = #{url},</if>
+            <if test="isButton != null">is_button = #{isButton},</if>
+            <if test="buttonKey != null and buttonKey !=''">button_key = #{buttonKey},</if>
+            <if test="iconPath != null and iconPath != ''">icon_path = #{iconPath},</if>
+            <if test="enabled != null">enabled = #{enabled},</if>
+            <if test="modifyOperatorId != null">modify_operator_id = #{modifyOperatorId},</if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteByParentId">
+        update menu
+        set enabled = 0, modify_operator_id = #{currentEmployeeId}
+        where parent_id = #{parentId}
+    </delete>
+
+    <select id="queryAllMenu" resultMap="base_result">
+        select
+        <include refid="base_column"/>
+        from menu m left join menu_description md on m.id = md.menu_id
+        where m.enabled = 1 and md.enabled = 1
+        order by m.create_time
+    </select>
+
+    <select id="getEmployeeMenu" resultMap="base_result">
+        select
+        <include refid="base_column"/>
+        from menu m
+        left join menu_description md on m.id = md.menu_id
+        left join role_menu rm on rm.menu_id = m.id
+        left join role r on r.id = rm.role_id
+        left join employee_role er on er.role_id = r.id
+        where md.locale = #{languageAndCountry} and m.enabled = 1 and md.enabled = 1 and r.enabled = 1
+        and er.employee_id = #{employeeId}
+        order by m.create_time
+    </select>
+
+    <select id="getButton" parameterType="java.util.List" resultMap="base_result">
+        select
+        distinct(m.id),
+        m.parent_id,
+        m.url,
+        m.is_button,
+        m.button_key,
+        m.icon_path,
+        m.enabled,
+        m.create_time,
+        m.create_operator_id,
+        m.modify_time,
+        m.modify_operator_id,
+        md.id md_id,
+        md.menu_id md_menu_id,
+        md.locale md_locale,
+        md.description md_description,
+        md.enabled md_enabled,
+        md.create_time md_create_time,
+        md.create_operator_id md_create_operator_id,
+        md.modify_time md_modify_time,
+        md.modify_operator_id md_modify_operator_id
+        from menu m
+        left join menu_description md on m.id = md.menu_id
+        where md.locale = #{languageAndCountry} and m.enabled = 1 and md.enabled = 1  and m.is_button=1
+        and m.parent_id =#{id}
+        order by m.create_time
+    </select>
+
+
+    <sql id="base_column">
+        m.id,
+        m.parent_id,
+        m.url,
+        m.is_button,
+        m.button_key,
+        m.icon_path,
+        m.enabled,
+        m.create_time,
+        m.create_operator_id,
+        m.modify_time,
+        m.modify_operator_id,
+        md.id md_id,
+        md.menu_id md_menu_id,
+        md.locale md_locale,
+        md.description md_description,
+        md.enabled md_enabled,
+        md.create_time md_create_time,
+        md.create_operator_id md_create_operator_id,
+        md.modify_time md_modify_time,
+        md.modify_operator_id md_modify_operator_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.panshi.hujin2.base.security.dao.mapper.system.department.DepartmentMapper">
+
+    <insert id="add">
+        insert into department (parent_id, name, description, create_operator_id)
+        values (#{parentId}, #{name}, #{description}, #{createOperatorId});
+    </insert>
+
+    <update id="delete">
+        update department
+        set enabled = 0, modify_operator_id = #{currentEmployeeId}
+        where id = #{departmentId}
+    </update>
+
+    <update id="deleteChildrenRelevance">
+        update department
+        set parent_id = null, modify_operator_id = #{currentEmployeeId}
+        where parent_id = #{parentDepartmentId}
+    </update>
+
+    <update id="update">
+        update department
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="name != null and name != ''">`name` = #{name},</if>
+            <if test="description != null and description != ''">description = #{description},</if>
+            <if test="modifyOperatorId != null">modify_operator_id = #{modifyOperatorId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <select id="select" resultType="com.panshi.hujin2.base.security.dao.model.system.department.DepartmentDO">
+        select
+            id,
+            parent_id,
+            `name`,
+            description,
+            enabled,
+            create_time,
+            create_operator_id,
+            modify_time,
+            modify_operator_id
+        from department
+        where enabled = 1
+    </select>
+
+</mapper>

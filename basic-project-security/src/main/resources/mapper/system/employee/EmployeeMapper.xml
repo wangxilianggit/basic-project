@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.panshi.hujin2.base.security.dao.mapper.system.employee.EmployeeMapper">
+
+    <resultMap id="base_list_result" type="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="description" column="description"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="idNumber" column="id_number"/>
+        <result property="address" column="address"/>
+        <result property="headPortraitUrl" column="head_portrait_url"/>
+        <result property="enabled" column="enabled"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createOperatorId" column="create_operator_id"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifyOperatorId" column="modify_operator_id"/>
+        <collection property="departmentDOS" javaType="ArrayList" columnPrefix="d_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.department.DepartmentDO">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+        </collection>
+        <collection property="roleDOS" javaType="ArrayList" columnPrefix="r_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.role.RoleDO">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="base_detail_result" type="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="description" column="description"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="idNumber" column="id_number"/>
+        <result property="address" column="address"/>
+        <result property="headPortraitUrl" column="head_portrait_url"/>
+        <result property="enabled" column="enabled"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createOperatorId" column="create_operator_id"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifyOperatorId" column="modify_operator_id"/>
+        <collection property="departmentDOS" javaType="ArrayList" columnPrefix="d_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.department.DepartmentDO">
+            <result property="id" column="id"/>
+            <result property="parentId" column="parent_id"/>
+            <result property="name" column="name"/>
+            <result property="description" column="description"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+        <collection property="roleDOS" javaType="ArrayList" columnPrefix="r_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.role.RoleDO">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="description" column="description"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="base_authentication_result" type="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="description" column="description"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="idNumber" column="id_number"/>
+        <result property="address" column="address"/>
+        <result property="headPortraitUrl" column="head_portrait_url"/>
+        <result property="enabled" column="enabled"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createOperatorId" column="create_operator_id"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="modifyOperatorId" column="modify_operator_id"/>
+        <collection property="departmentDOS" javaType="ArrayList" columnPrefix="d_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.department.DepartmentDO">
+            <result property="id" column="id"/>
+            <result property="parentId" column="parent_id"/>
+            <result property="name" column="name"/>
+            <result property="description" column="description"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+        <collection property="roleDOS" javaType="ArrayList" columnPrefix="r_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.role.RoleDO">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="description" column="description"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createTime" column="create_time"/>
+            <result property="createOperatorId" column="create_operator_id"/>
+            <result property="modifyTime" column="modify_time"/>
+            <result property="modifyOperatorId" column="modify_operator_id"/>
+        </collection>
+        <collection property="controllerAuthentications" javaType="ArrayList" columnPrefix="c_"
+                    ofType="com.panshi.hujin2.base.security.dao.model.system.menu.ControllerAuthentication">
+            <result property="id" column="id"/>
+            <result property="controllerUrl" column="controller_url"/>
+            <result property="requestMethod" column="request_method"/>
+        </collection>
+    </resultMap>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into employee (username, password, description, phone_number, id_number, address, head_portrait_url, status, create_operator_id)
+        values (#{username}, #{password}, #{description}, #{phoneNumber}, #{idNumber}, #{address}, #{headPortraitUrl},
+                #{status}, #{createOperatorId});
+    </insert>
+
+    <update id="delete">
+        update employee
+        set enabled = 0, modify_operator_id = #{currentEmployeeId}
+        where id = #{employeeId}
+    </update>
+
+    <update id="update">
+        update employee
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="password != null and password != ''">`password` = #{password},</if>
+            <if test="description != null and description != ''">description = #{description},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
+            <if test="idNumber != null and idNumber != ''">id_number = #{idNumber},</if>
+            <if test="address != null and address != ''">address = #{address},</if>
+            <if test="headPortraitUrl != null and headPortraitUrl != ''">head_portrait_url = #{headPortraitUrl},</if>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="modifyOperatorId != null">modify_operator_id = #{modifyOperatorId},</if>
+            <if test="enabled != null">enabled = #{enabled},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <select id="get" resultMap="base_detail_result">
+        select
+            e.id,
+            e.username,
+            e.password,
+            e.description,
+            e.phone_number,
+            e.id_number,
+            e.address,
+            e.head_portrait_url,
+            e.enabled,
+            e.status,
+            e.create_time,
+            e.create_operator_id,
+            e.modify_time,
+            e.modify_operator_id,
+            d.id                 d_id,
+            d.parent_id          d_parent_id,
+            d.name               d_name,
+            d.description        d_description,
+            d.enabled            d_enabled,
+            d.create_time        d_create_time,
+            d.create_operator_id d_create_operator_id,
+            d.modify_time        d_modify_time,
+            d.modify_operator_id d_modify_operator_id,
+            r.id                 r_id,
+            r.name               r_name,
+            r.description        r_description,
+            r.enabled            r_enabled,
+            r.create_time        r_create_time,
+            r.create_operator_id r_create_operator_id,
+            r.modify_time        r_modify_time,
+            r.modify_operator_id r_modify_operator_id
+        from employee e
+            left join employee_department ed on ed.employee_id = e.id
+            left join department d on d.id = ed.department_id
+            left join employee_role er on er.employee_id = e.id
+            left join role r on r.id = er.role_id
+        where e.id = #{employeeId}
+    </select>
+
+    <select id="loadUserByUsername" resultMap="base_authentication_result">
+        select
+            e.id,
+            e.username,
+            e.password,
+            e.description,
+            e.phone_number,
+            e.id_number,
+            e.address,
+            e.head_portrait_url,
+            e.enabled,
+            e.status,
+            e.create_time,
+            e.create_operator_id,
+            e.modify_time,
+            e.modify_operator_id,
+            d.id                 d_id,
+            d.parent_id          d_parent_id,
+            d.name               d_name,
+            d.description        d_description,
+            d.enabled            d_enabled,
+            d.create_time        d_create_time,
+            d.create_operator_id d_create_operator_id,
+            d.modify_time        d_modify_time,
+            d.modify_operator_id d_modify_operator_id,
+            r.id                 r_id,
+            r.name               r_name,
+            r.description        r_description,
+            r.enabled            r_enabled,
+            r.create_time        r_create_time,
+            r.create_operator_id r_create_operator_id,
+            r.modify_time        r_modify_time,
+            r.modify_operator_id r_modify_operator_id,
+            c.id                 c_id,
+            c.controller_url     c_controller_url,
+            c.request_method     c_request_method
+        from employee e
+            left join employee_department ed on ed.employee_id = e.id
+            left join department d on d.id = ed.department_id
+            left join employee_role er on er.employee_id = e.id
+            left join role r on r.id = er.role_id
+            left join role_menu rm on rm.role_id = r.id
+            left join menu m on m.id = rm.menu_id
+            left join menu_controller mc on mc.menu_id = m.id
+            left join controller_authentication c on c.id = mc.controller_id
+        where e.username = #{username}
+              and (e.enabled = 1 or e.enabled is null)
+              and (d.enabled = 1 or d.enabled is null)
+              and (r.enabled = 1 or r.enabled is null)
+              and (m.enabled = 1 or m.enabled is null)
+    </select>
+
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(e.id)
+        FROM employee e
+        LEFT JOIN employee_department ed ON ed.employee_id = e.id
+        LEFT JOIN department d ON d.id = ed.department_id
+        LEFT JOIN employee_role er ON er.employee_id = e.id
+        LEFT JOIN role r ON r.id = er.role_id
+        <where>
+            <include refid="base_where"/>
+        </where>
+    </select>
+
+    <select id="query" resultMap="base_list_result">
+        select
+        e.id,
+        e.username,
+        e.password,
+        e.description,
+        e.phone_number,
+        e.id_number,
+        e.address,
+        e.head_portrait_url,
+        e.enabled,
+        e.status,
+        e.create_time,
+        e.create_operator_id,
+        e.modify_time,
+        e.modify_operator_id,
+        d.id d_id,
+        d.name d_name,
+        r.id r_id,
+        r.name r_name
+        from employee e
+        left join employee_department ed on ed.employee_id = e.id
+        left join department d on d.id = ed.department_id
+        left join employee_role er on er.employee_id = e.id
+        left join role r on r.id = er.role_id
+        <where>
+            <include refid="base_where"/>
+        </where>
+        <if test="orderObjects != null and orderObjects.size > 0">
+            order by
+            <foreach collection="orderObjects" item="orderObject" separator=",">
+                #{orderObject.orderByColumn}
+                <if test="orderObject.orderByDesc">
+                    DESC
+                </if>
+            </foreach>
+        </if>
+        <if test="page.dbIndex != null and page.dbNumber != null">
+            limit #{page.dbIndex},#{page.dbNumber}
+        </if>
+    </select>
+
+    <sql id="base_where">
+        <if test="description != null and description != ''">and e.description like CONCAT('%',#{description},'%')</if>
+        <if test="username != null and username != ''">and e.username like CONCAT('%',#{username},'%')</if>
+        <if test="phoneNumber != null and phoneNumber != ''">and e.phone_number like CONCAT('%',#{phoneNumber},'%')</if>
+        <if test="idNumber != null and idNumber != ''">and e.id_number like CONCAT('%',#{idNumber},'%')</if>
+        <if test="address != null and address != ''">and e.address = #{address}</if>
+        <if test="headPortraitUrl != null and headPortraitUrl != ''">
+            and e.head_portrait_url = #{headPortraitUrl}
+        </if>
+        <if test="enabled != null">and e.enabled = #{enabled}</if>
+        <if test="status != null">and e.status = #{status}</if>
+    </sql>
+    
+    <select id="getEmployeeBase" resultType="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        select username, description, phone_number, address, head_portrait_url, status, create_operator_id, modify_operator_id from employee where id= #{id}
+    </select>
+
+    <select id="getByUserName"
+            resultType="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        select *
+        from employee
+        where username = #{username}
+    </select>
+
+    <select id="selectEmployeeName" resultType="com.panshi.hujin2.base.security.dao.model.system.employee.EmployeeDO">
+        select
+        id,
+        username
+        FROM employee
+        <where>
+            <choose>
+                <when test="list != null and list.size > 0">
+                    id IN
+                    <foreach collection="list" separator="," open="(" close=")" item="employeeId">
+                        #{employeeId}
+                    </foreach>
+                </when>
+                <otherwise>
+                    1 = 0
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+</mapper>

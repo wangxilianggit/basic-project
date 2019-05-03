@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.panshi.hujin2.base.security.dao.mapper.system.employee_department.EmployeeDepartmentMapper">
+
+    <insert id="add">
+        insert into employee_department (employee_id, department_id, create_operator_id)
+        values (#{employeeId}, #{departmentId}, #{createOperatorId});
+    </insert>
+
+    <delete id="delete">
+        delete from employee_department
+        <where>
+            <if test="employeeId != null">and employee_id = #{employeeId}</if>
+            <if test="departmentId != null">and department_id = #{departmentId}</if>
+        </where>
+    </delete>
+</mapper>
