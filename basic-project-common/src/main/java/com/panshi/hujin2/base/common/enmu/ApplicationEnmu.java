@@ -24,7 +24,10 @@ public enum ApplicationEnmu {
     MX_HI_LOAN(12,"HiLoan","es_MX"),
 
     BR_WOWLOAN(13,"WOWLoan","pt_BR"),
-    BR_FREELOAN(14,"FreeLoan","pt_BR");
+    BR_FREELOAN(14,"FreeLoan","pt_BR"),
+
+    VI_CASH_DOG(21,"cashDog","vi");
+    ;;
 
     private Integer code;
     private String desc;

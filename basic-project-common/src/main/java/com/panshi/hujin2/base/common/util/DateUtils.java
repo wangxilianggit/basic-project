@@ -26,8 +26,49 @@ public class DateUtils {
     public final static String FORMAT = "yyyy-MM-dd HH:mm:ss";
     public final static String FORMAT1 = "dd-MM-yyyy";
     public final static String FORMAT2 = "HH:mm:ss dd-MM-yyyy";
+    private final static String FORMAT3 = "yyyyMMdd";
     public final static String SIMPLE_FORMAT = "yyyy-MM-dd";
-    private final static Logger logger = LoggerFactory.getLogger(DateUtils.class);
+
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(DateUtils.class);
+
+
+
+    /**
+     * @title: dateCompare
+     * @description: 按传入时间的‘年月日’比较日期大小(日期1在日期2之前返回-1；
+     *                                           日期1在日期2之后返回1;
+     *                                           相等返回0;)
+     * @param date1 日期1
+     * @param date2 日期2
+     * @return
+     */
+    public static int dateCompare(Date date1, Date date2) {
+        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT3);
+        String dateFirst = sdf.format(date1);
+        String dateLast = sdf.format(date2);
+        int dateFirstIntVal = Integer.parseInt(dateFirst);
+        int dateLastIntVal = Integer.parseInt(dateLast);
+        if (dateFirstIntVal > dateLastIntVal) {
+            return 1;
+        } else if (dateFirstIntVal < dateLastIntVal) {
+            return -1;
+        }
+        return 0;
+    }
+
+
+    public static void main(String[] args) {
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        calendar.add(Calendar.MONTH, 1);
+        Date newDate = calendar.getTime();
+
+        System.out.println("dateCompare(currentDate,newDate) = " + dateCompare(currentDate,currentDate));
+    }
+
+
 
     /**
      * 字符串转时间格式
