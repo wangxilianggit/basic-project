@@ -26,7 +26,8 @@ public enum ApplicationEnmu {
     BR_WOWLOAN(13,"WOWLoan","pt_BR"),
     BR_FREELOAN(14,"FreeLoan","pt_BR"),
 
-    VI_CASH_DOG(21,"cashDog","vi");
+    VI_CASH_DOG(21,"cashDog","vi"),
+    INA_WEB_GAME(22,"webGame","id-ID");// 印尼/印尼
     ;;
 
     private Integer code;
