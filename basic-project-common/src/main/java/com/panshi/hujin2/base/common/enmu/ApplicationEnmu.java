@@ -29,6 +29,7 @@ public enum ApplicationEnmu {
     VI_CASH_DOG(21,"cashDog","vi"),
     INA_WEB_GAME(22,"webGame","id_ID"),// 印尼/印尼
     INA_CASH_KANGAROO(23,"cashKangaroo","id_ID"),// 印尼/印尼
+    INA_CASH_KANGAROO_2(24,"cashKangaroo2","id_ID"),// 印尼/印尼
 
     ;
 
