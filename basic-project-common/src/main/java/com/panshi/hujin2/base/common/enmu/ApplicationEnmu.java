@@ -32,7 +32,9 @@ public enum ApplicationEnmu {
     INA_CASH_KANGAROO_2(24,"cashKangaroo2","id_ID"),// 印尼/印尼
     INA_CASH_KANGAROO_DEXTER(25,"cashKangarooDexter","id_ID"),// 印尼/印尼
 
-    VI_CASH_DOG_NEVWESOLDOUT(26,"cashDogNeverSoldout","vi"),    // 越南
+    VI_CASH_DOG_NEVERSOLDOUT(26,"cashDogNeverSoldout","vi"),    // 越南
+
+    VI_CASH_DOG_GOODDAY(27,"cashDogGoodDay","vi"),    // 越南
     ;
 
     private Integer code;
