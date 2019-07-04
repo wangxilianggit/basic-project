@@ -26,16 +26,16 @@ public enum ApplicationEnmu {
     BR_WOWLOAN(13,"WOWLoan","pt_BR"),
     BR_FREELOAN(14,"FreeLoan","pt_BR"),
 
-    VI_CASH_DOG(21,"cashDog","vi"),
-    INA_WEB_GAME(22,"webGame","id_ID"),// 印尼/印尼
-    INA_CASH_KANGAROO(23,"cashKangaroo","id_ID"),// 印尼/印尼
-    INA_CASH_KANGAROO_2(24,"cashKangaroo2","id_ID"),// 印尼/印尼
-    INA_CASH_KANGAROO_DEXTER(25,"cashKangarooDexter","id_ID"),// 印尼/印尼
+    VI_CASH_DOG(21,"CashDog","vi"),
+    INA_WEB_GAME(22,"webGame","id_ID"),// 印尼
+    INA_CASH_KANGAROO(23,"CashKangaroo","id_ID"),// 印尼-cashKangaroo
+    INA_CASH_KANGAROO_2(24,"CashKangaroo","id_ID"),// 印尼-cashKangaroo2
+    INA_CASH_KANGAROO_DEXTER(25,"CashKangaroo","id_ID"),// 印尼 -cashKangarooDexter
 
-    VI_CASH_DOG_NEVERSOLDOUT(26,"cashDogNeverSoldout","vi"),    // 越南
+    VI_CASH_DOG_NEVERSOLDOUT(26,"CashDog","vi"),    // 越南-cashDogNeverSoldout
 
-    VI_CASH_DOG_GOODDAY(27,"cashDogGoodDay","vi"),    // 越南
-    VI_CASH_CAT(28,"cashCat","vi"),    // 越南
+    VI_CASH_DOG_GOODDAY(27,"CashDog","vi"),    // 越南-cashDogGoodDay
+    VI_CASH_CAT(28,"CashCat","vi"),    // 越南
     ;
 
     private Integer code;
