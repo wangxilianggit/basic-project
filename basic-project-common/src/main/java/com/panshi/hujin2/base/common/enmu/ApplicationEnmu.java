@@ -36,6 +36,7 @@ public enum ApplicationEnmu {
 
     VI_CASH_DOG_GOODDAY(27,"CashDog","vi"),    // 越南-cashDogGoodDay
     VI_CASH_CAT(28,"CashCat","vi"),    // 越南
+    VI_IN_CASHCAT(29,"CashCat","vi"),    // 越南
     ;
 
     private Integer code;
