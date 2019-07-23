@@ -39,6 +39,7 @@ public enum ApplicationEnmu {
     VI_IN_CASHCAT(29,"CashCat","vi"),    // 越南
     INA_ATTRACTIVE_KANGAROOCASH(30,"CashKangaroo","id_ID"),    // 印尼 com.attractive.kangaroocash
     INA_KAS_KANGAROO(31,"CashKangaroo","id_ID"),    // 印尼 com.KasKangaroo.in
+    VI_CASH_CAT_32(32,"CashCat","vi"),
     ;
 
     private Integer code;
