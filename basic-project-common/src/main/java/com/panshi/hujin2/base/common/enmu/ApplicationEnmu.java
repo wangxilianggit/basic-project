@@ -49,11 +49,17 @@ public enum ApplicationEnmu {
     // 印尼马甲包
     NEW_INA_CASH_KLICK(200,"CashKlick","id_ID"),    // 印尼 com.cashklick.wqas
     NEW_INA_CASH_MAS(201,"MasCash","id_ID"),    // 印尼 com.mascash.unndt
-    NEW_INA_CASH_KLICK_TASK(202,"CashKlick","id_ID"),    // 印尼 com.task.wqas
+    NEW_INA_CASH_KLICK_TASK(204,"CashKlick","id_ID"),    // 印尼 com.task.wqas
     NEW_INA_CASH_MAS_TEXT(203,"MasCash","id_ID"),    // 印尼  com.text.unndt
 
 
     SUPER_SMS(101,"SUPER_SMSSUPER_SMS","id_ID"),
+
+    // 印尼马甲包
+    INA_CASH_YINNI_IN(500,"CashKlick","id_ID"),    // 印尼 com.yinni.in
+
+    // 越南马甲包
+    VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
     ;
 
     private Integer code;
