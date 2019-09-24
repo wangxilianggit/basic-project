@@ -54,6 +54,8 @@ public enum ApplicationEnmu {
 
     NEW_INA_CASH_MASTEXT_UNNDT(205,"MasCash","id_ID"),    // 印尼  com.mastext.unndt
 
+    NEW_INA_CASH_TASK_WQAS(206,"CashKlick","id_ID"),    // 印尼  com.cashtask.wqas
+
 
     SUPER_SMS(101,"SUPER_SMSSUPER_SMS","id_ID"),
 
