@@ -62,7 +62,7 @@ public enum ApplicationEnmu {
     // 印尼马甲包
     INA_CASH_YINNI_IN(500,"CashKlick","id_ID"),    // 印尼 com.yinni.in
 
-    INA_CASH_IN_ROO (501,"cashKangaroo","id_ID"),    //印尼 com.in.roo
+    INA_CASH_IN_ROO (501,"DompetEmas","id_ID"),    //印尼 com.in.roo
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
     ;
