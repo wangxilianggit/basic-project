@@ -60,9 +60,17 @@ public enum ApplicationEnmu {
     SUPER_SMS(101,"SUPER_SMSSUPER_SMS","id_ID"),
 
     // 印尼马甲包
-    INA_CASH_YINNI_IN(500,"CashKlick","id_ID"),    // 印尼 com.yinni.in
+    INA_CASH_YINNI_IN(500,"cashKangaroo","id_ID"),    // 印尼 com.yinni.in
+
 
     INA_CASH_IN_ROO (501,"DompetEmas","id_ID"),    //印尼 com.in.roo
+
+    //INA_CASH_IN_ROO (501,"cashKangaroo","id_ID"),    //印尼 com.in.roo
+
+    // 印尼马甲包
+    INA_CASH_DF(502,"cashKangaroo","id_ID"),    // 印尼 com.app.df.in
+    INA_CASH_DCM_MIAO(503,"DompetEmas","id_ID"),    // 印尼 com.app.dcm.miao
+
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
     ;
