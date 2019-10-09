@@ -70,6 +70,8 @@ public enum ApplicationEnmu {
     // 印尼马甲包
     INA_CASH_DF(502,"cashKangaroo","id_ID"),    // 印尼 com.app.df.in
     INA_CASH_DCM_MIAO(503,"DompetEmas","id_ID"),    // 印尼 com.app.dcm.miao
+    INA_APPAPK_CASH_DCM_MIAO(505,"DompetEmas","id_ID"),    // 印尼 com.appapk.dcm.miao
+    INA_XUAN_CASH_DCM_MIAO(509,"DompetEmas","id_ID"),    // 印尼 com.xuan.dcm.miao
 
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
