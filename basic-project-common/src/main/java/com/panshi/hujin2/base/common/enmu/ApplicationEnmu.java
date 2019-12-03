@@ -77,6 +77,8 @@ public enum ApplicationEnmu {
     INA_XM_MASBANTUAN(513,"MasBantuan","id_ID"),    // 印尼 com.example.daman
     INA_XM_MASBANTUAN_SSS(514,"SuperSiNa","id_ID"),    // 印尼 com.example.daman
 
+    INA_XM_MASBANTUAN_SSS_516(516,"cashKangaroo","id_ID"),    // 印尼 com.app.xuanmiao.dc
+
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
     ;
