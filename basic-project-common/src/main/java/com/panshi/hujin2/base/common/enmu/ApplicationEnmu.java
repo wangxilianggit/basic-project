@@ -80,6 +80,7 @@ public enum ApplicationEnmu {
     INA_XM_MASBANTUAN_SSS_516(516,"cashKangaroo","id_ID"),    // 印尼 com.app.xuanmiao.dc
 
     INA_COM_JUNP_LINKPLUS_520(520,"LinkPlus","id_ID"),    // 印尼 com.junp.linkplus LinkPlus
+    INA_COM_JUNP_LINKPLUS_521(521,"CashKangaroo","id_ID"),    // 印尼 inacashkangaroo.app
 
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
