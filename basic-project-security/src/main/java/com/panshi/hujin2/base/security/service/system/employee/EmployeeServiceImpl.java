@@ -24,6 +24,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 
@@ -98,7 +99,7 @@ public class EmployeeServiceImpl implements IEmployeeService, UserDetailsService
         Objects.requireNonNull(employeeId);
         EmployeeDO employeeDO = boTransformDo(employeeBO);
         String password = employeeDO.getPassword();
-        if (password != null) {
+        if (!StringUtils.isEmpty(password)) {
             employeeDO.setPassword(passwordEncoder.encode(password));
         }
         employeeDO.setModifyOperatorId(EmployeeUtil.getCurrentEmployeeId());
