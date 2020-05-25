@@ -84,6 +84,9 @@ public enum ApplicationEnmu {
 
     // 越南马甲包
     VI_CASH_ANDROID_CASHCAT(600,"MasCash","id_ID"),    // 印尼  com.android.cashcat
+
+    // 国内贷超
+    COM_YOUBEL_APP(10000,"有贝而来","zh_CN"),    // 中国  com.android.cashcat
     ;
 
     private Integer code;
