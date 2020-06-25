@@ -87,6 +87,9 @@ public enum ApplicationEnmu {
 
     // 国内贷超
     COM_YOUBEL_APP(10000,"有贝而来","zh_CN"),    // 中国  com.android.cashcat
+
+    //营销短信发送
+    MARKETING_SMS(20001,"营销短信","zh_CN"),    // 中国  营销短信发送
     ;
 
     private Integer code;
