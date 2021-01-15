@@ -90,6 +90,10 @@ public enum ApplicationEnmu {
 
     //营销短信发送
     MARKETING_SMS(20001,"营销短信","zh_CN"),    // 中国  营销短信发送
+
+
+    //印度CPI
+    INDIA_CASH_KANGAROO(30001,"印度CPI","en_IN"),    // 中国  营销短信发送
     ;
 
     private Integer code;
