@@ -93,7 +93,7 @@ public enum ApplicationEnmu {
 
 
     //印度CPI
-    INDIA_CASH_KANGAROO(30001,"印度CPI","en_IN"),    // 中国  营销短信发送
+    INDIA_CASH_KANGAROO(30001,"CashKangaroo","en_IN"),    // 中国  营销短信发送
     ;
 
     private Integer code;
